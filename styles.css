@@ -1,0 +1,253 @@
+* {
+    
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: 100;
+	line-height: 1.3em;
+    background-color: #f4f4f4;
+}
+
+a {
+    all:unset;
+}
+
+/******************** MENU *******************/
+
+#bg{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+    z-index: -10;
+}
+
+#book{
+    position: absolute;
+    width: 100%;
+    height: auto;
+    bottom: 0;
+    left: 0;
+    z-index: -5;
+}
+#logo_mark{
+    width: 40%;
+    height: auto;
+}
+.main-title {
+    line-height: 1;
+    font-size: 30px;
+}
+.logo-section{
+    margin-top: 8%;
+    margin-bottom: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+}
+
+.menu-section{
+    height: auto;
+    width: 100vw;
+}
+.menu-box {
+    width: 100%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+.menu-button{
+    font-family: "Red Hat Display", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal; 
+    color: #705249; 
+    &:hover {
+        color: #fff4dc;
+        text-shadow:1px 1px 10px #fcebc7, 1px 1px 8px #ffb45b,1px 1px 30px #fcebc7;
+    }
+}
+
+.bottom-section{
+    bottom: 0;
+    display: absolute;
+ 
+}
+
+/******************** GAME *******************/
+.bolder-hover:hover {
+    font-weight: bold;
+}
+
+.dialog-window-section {
+    width: 100vw;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    position: absolute;
+    bottom: 0;
+    z-index: 1;
+}
+
+.dialog-window {
+    width: 80vw;
+    min-height: 15vh;
+    max-height: 50vh; /* Maximální výška, aby nepřekrylo menu */
+    padding: 20px;
+    background: white;
+    border: 1px solid black;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    transition: height 0.3s ease-in-out;
+    overflow: hidden; /* Skryje přebytečný obsah, pokud je potřeba */
+}
+
+
+.text-box {
+    /* border: 1px solid black; */
+    height: 100%;
+    width: 100%;
+}
+
+
+.in-game-menu{
+    width: 100%;
+    height: auto;
+    /* border: 1px solid black; */
+    display: flex;
+    text-align: center;
+    justify-content: space-around;
+}
+
+#text-container{
+    padding: 10px 0 10px 0;
+}
+
+.game-container {
+    position: absolute;
+
+}
+
+canvas {
+ position: absolute;
+}
+
+/***no more - editnout nebo vymazat
+#game-canvas {
+    top:0; left:0; bottom:0; right:0;
+    background-color: gray;
+    max-width: 100%;
+    z-index: -3;
+    
+}
+***/
+
+/******************** CHAPTERS *******************/
+.menu-back{
+    display: flex;
+    position: fixed;
+    z-index: 1000;
+    padding: 3vh 3vw 3vh 2vw;
+}
+
+.chapters-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    overflow: hidden;
+    background: #f4f4f4;
+}
+
+/* Šikmé sekce */
+.chapter-section {
+    position: absolute;
+    height: 100%;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Obsah zarovnán vpravo */
+    justify-content: flex-end; /* Obsah dolů */
+    transition: all 0.5s ease;
+    transform-origin: bottom right;
+    cursor: pointer;
+    overflow: hidden;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Výchozí rozložení sekcí */
+.chapter-section:nth-child(1) { transform: skewX(-15deg); width: 20%; }
+.chapter-section:nth-child(2) { transform: skewX(-15deg); width: 20%; }
+.chapter-section:nth-child(3) { transform: skewX(-15deg); width: 20%; }
+.chapter-section:nth-child(4) { transform: skewX(-15deg); width: 20%; }
+.chapter-section:nth-child(5) { transform: skewX(-15deg); width: 20%; }
+
+/* Zakážeme CSS hover efekt, ať to řeší jen JS */
+.chapter-section:hover {
+    width: 20%; 
+    transform: skewX(-15deg);
+}
+
+/* Žádné CSS zmenšování – JS to má pod kontrolou */
+.chapters-container:hover .chapter-section:not(:hover) {
+    width: 20%;
+    transform: skewX(-15deg);
+}
+
+/* Opravené unskewed – odstraníme skew pro text a obrázek */
+.unskewed {
+    transform: skewX(15deg);
+}
+
+/* Text (h2) v nehovernuté verzi nad postavou */
+.chapter-section h2 {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%) skewX(15deg);
+    font-size: 2em;
+    transition: all 0.5s ease;
+}
+
+/* Obrazek postavy */
+.ch-character {
+    position: absolute;
+    bottom: 0; /* Držíme ho vždy dole */
+    right: -40%; /* Vždy napravo */
+    min-width: 350px;
+    max-width: 100%;
+    transform: skewX(15deg);
+    transition: all 0.5s ease;
+}
+
+/* Hover efekt - text se přesune doleva, obrázek se zvětší */
+.chapter-section:hover h2 {
+    left: 10%; /* Přesun textu doleva */
+}
+
+.chapter-section:hover .ch-character {
+    width: 100%; /* Zvětší se při hoveru */
+    transform: skewX(15deg); /* Mírné zvětšení a zachování skew */
+}
+
+
+
+/******************** SETTINGS *******************/
