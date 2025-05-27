@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chat s AI</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; max-width: 600px; margin: auto; }
+    #chat { white-space: pre-wrap; margin-bottom: 1rem; }
+    input, button { font-size: 1rem; padding: 0.5rem; width: 100%; margin-top: 0.5rem; }
+  </style>
+</head>
+<body>
+  <h1>Chat s tvým AI modelem</h1>
+  <div id="chat"></div>
+  <input type="text" id="userInput" placeholder="Napiš zprávu..." />
+  <button onclick="sendMessage()">Odeslat</button>
+  <button id="returnToGame">Zpět do hry</button>
+
+
+  <script src="../Scripts/chat.js"></script>
+</body>
+</html>

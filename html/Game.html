@@ -5,35 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>One Step Out of Love</title>
     <link rel="stylesheet" href="../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pangolin&display=swap" rel="stylesheet"> 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 
     <!-- Herní sekce -->
-    <div class="dialog-window-section">
-        <div class="dialog-window">
-            <div class="text-box">
-                <!-- Zde se zobrazí text scény -->
+    <div id="side-menu" class="menu-collapsed">
+        <div class="menu-buttons">
+            <a href="Menu.html">
+            <img src="../Sprites/Default/UI/UI_home.svg" alt="Home"/>
+            </a>
+            <a href="Settings.html">
+            <img src="../Sprites/Default/UI/UI_settings.svg" alt="Settings"/>
+            </a>
+            <img src="../Sprites/Default/UI/UI_audio.svg" alt="Sound"/>
+        </div>
+        <div id="toggle-menu">
+            <img src="../Sprites/Default/UI/UI_dropdown.svg" alt="Toggle Menu"/>
+        </div>
+    </div>
+    <div id="game-ui">
+        <div class="dialog-window-section">
+            <div class="dialog-window">
+                <img src="../Sprites/Default/UI/UI_dialogw_M.svg" class="dialog-svg"/>
+                    <div class="text-box">
                 <div id="text-container"></div>
+            </div>   
+                <div class="dialog-controls">
+                    <button id="prev-line"><img src="../Sprites/Default/UI/UI_back.svg" alt="Zpět"></button>
+                    <button id="skip-to-choice"><img src="../Sprites/Default/UI/UI_skip.svg" alt="Přeskočit"></button>
+                </div>
             </div>
-            
-            <!-- Možnosti volby hráče -->
             <div id="choices-container"></div>
-
-            <!-- Herní menu -->
-            <div class="in-game-menu">
-                <a href="Menu.html" class="bolder-hover">Menu</a>
-                <a href="Settings.html" class="bolder-hover">Settings</a>
-                <a href="#" id="skip-button" class="bolder-hover">Skip</a>
-            </div>
         </div>
     </div>
 
     <!-- Herní plátno -->
     <div class="game-container">
         <canvas id="background-canvas"></canvas>
+        <canvas id="background-effect-canvas"></canvas>
         <canvas id="character-canvas"></canvas>
+        <canvas id="foreground-effect-canvas"></canvas>
     </div>
+
+    <div id="heart-crack-container" style="display: none;">
+        <img src="../Sprites/Default/UI/UI_heart_half_L.svg" class="heart-part left-part" />
+        <img src="../Sprites/Default/UI/UI_heart_right_R.svg" class="heart-part right-part" />
+    </div>
+
+    <div id="heart-pulsing-container" style="display: none;">
+        <img src="../Sprites/Default/UI/UI_heart.svg" class="heart-full" />
+    </div>
+
     <!--!!!!!!!!DEBUG VZTAHŮ!!!!!!!-->
     <div id="debug-relationships" style="position: fixed; top: 10px; right: 10px; background: #fff3; color: #fff; padding: 10px; font-family: monospace; font-size: 14px; z-index: 1000; border-radius: 8px;">
         <strong>💬 Vztahy:</strong>
@@ -41,10 +67,12 @@
       </div>
       
     <!-- Skripty -->
+    <script src="../Scripts/soundmanager.js"></script>
     <script src="../Scripts/loader.js"></script> <!-- Musí být první -->
     <script src="../Scripts/Chapter_1/ch1_characters.js"></script>
     <script src="../Scripts/Chapter_1/ch1_backgrounds.js"></script>
     <script src="../Scripts/Chapter_1/chapter1_setup.js"></script>
+    <script src="../Scripts/Chapter_1/ch1_cutscenes.js"></script>
     <script src="../Scripts/game.js"></script>
     
 
